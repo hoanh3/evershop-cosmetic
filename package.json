@@ -1,0 +1,18 @@
+{
+  "name": "evershop",
+  "version": "1.0.0",
+  "description": "Developer by @hoantc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "evershop install",
+    "build": "evershop build",
+    "start": "evershop start",
+    "dev": "evershop dev"
+  },
+  "author": "@hoantc",
+  "license": "ISC",
+  "dependencies": {
+    "@evershop/evershop": "^1.2.2"
+  }
+}

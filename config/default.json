@@ -1,0 +1,30 @@
+{
+  "shop": {
+    "currency": "VND",
+    "language": "vi",
+    "weightUnit": "g"
+  },
+  "catalog": {
+    "product": {
+      "image": {
+        "thumbnail": {
+          "width": 200,
+          "height": 200
+        },
+        "listing": {
+          "width": 300,
+          "height": 300
+        },
+        "single": {
+          "width": 500,
+          "height": 500
+        }
+      }
+    },
+    "showOutOfStockProduct": false
+  },
+  "system": {
+    "theme": "eve",
+    "extensions": []
+  }
+}
