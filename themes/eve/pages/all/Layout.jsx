@@ -1,11 +1,13 @@
 import React from "react";
 import Area from "@components/common/Area";
-import LoadingBar from "@components/common/LoadingBar";
+import { Helmet } from 'react-helmet';
+import LoadingBar from "../../components/common/LoadingBar";
 import "../../css/global.scss";
 import "./Layout.scss";
 import "./tailwind.scss";
 
 export default function Layout() {
+
   return (
     <>
       <LoadingBar />

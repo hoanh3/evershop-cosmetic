@@ -1,0 +1,13 @@
+{
+  "name": "greeting_widget",
+  "version": "1.0.0",
+  "description": "A simple greeting widget for EverShop",
+  "keywords": [
+    "EverShop widget"
+  ],
+  "author": "The Nguyen (https://evershop.io/)",
+  "license": "GNU GENERAL PUBLIC LICENSE 3.0",
+  "engines": {
+    "node": ">= 14.0.0"
+  }
+}

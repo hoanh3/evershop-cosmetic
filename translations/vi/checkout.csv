@@ -1,0 +1,63 @@
+Total, Tổng cộng  
+Order, Đơn hàng  
+Sku, SKU  
+Continue to shipping, Tiếp tục đến giao hàng  
+Continue shopping, Tiếp tục mua sắm  
+Continue Shopping, Tiếp tục mua sắm  
+CONTINUE SHOPPING, TIẾP TỤC MUA SẮM  
+Shopping cart, Giỏ hàng  
+Product, Sản phẩm  
+Price, Giá  
+Quantity, Số lượng  
+Remove, Xóa  
+Qty, SL  
+Sub total, Tạm tính  
+Discount(${coupon}), Giảm giá (${coupon})  
+Order summary, Tóm tắt đơn hàng  
+Taxes and shipping calculated at checkout, Thuế và phí vận chuyển sẽ được tính khi thanh toán  
+CHECKOUT, THANH TOÁN  
+Change, Thay đổi  
+Payment Method, Phương thức thanh toán  
+Shipping Address, Địa chỉ giao hàng  
+Shipping Method, Phương thức giao hàng  
+No payment methods available, Không có phương thức thanh toán khả dụng  
+Place Order, Đặt hàng  
+My billing address is same as shipping address, Địa chỉ thanh toán giống với địa chỉ giao hàng  
+${count} items, ${count} sản phẩm  
+Discount, Giảm giá  
+Shipping, Phí vận chuyển  
+No tax, Không thuế  
+Tax, Thuế  
+Sorry, there is no available method for your address, Rất tiếc, không có phương thức giao hàng nào cho địa chỉ của bạn  
+Please enter a shipping address in order to see shipping quotes, Vui lòng nhập địa chỉ giao hàng để xem phí vận chuyển  
+Continue to payment, Tiếp tục đến thanh toán  
+No payment method available, Không có phương thức thanh toán khả dụng  
+Ship to, Giao đến  
+Shipment, Giao hàng  
+Thank you ${name}!, Cảm ơn bạn ${name}!  
+Contact information, Thông tin liên hệ  
+Order #${orderNumber}, Đơn hàng #${orderNumber}  
+ADD TO CART, THÊM VÀO GIỎ  
+Please select variant options, Vui lòng chọn tùy chọn sản phẩm  
+VIEW CART (${count}), XEM GIỎ HÀNG (${count})  
+JUST ADDED TO YOUR CART, ĐÃ THÊM VÀO GIỎ HÀNG  
+Promotion code?, Mã khuyến mãi?  
+Enter coupon code, Nhập mã khuyến mãi  
+Apply, Áp dụng  
+Your cart is empty!, Giỏ hàng của bạn đang trống!  
+Full name, Họ và tên  
+Telephone, Số điện thoại  
+Address, Địa chỉ  
+City, Thành phố  
+Country, Quốc gia  
+Postcode, Mã bưu điện  
+Inclusive of tax ${taxAmount}, Đã bao gồm thuế ${taxAmount}  
+Full name is required, Họ và tên là bắt buộc  
+Telephone is required, Số điện thoại là bắt buộc  
+Address is required, Địa chỉ là bắt buộc  
+City is required, Thành phố là bắt buộc  
+Country is required, Quốc gia là bắt buộc  
+Postcode is required, Mã bưu điện là bắt buộc  
+Contact, Liên hệ  
+Payment, Thanh toán  
+Inclusive of tax, Đã bao gồm thuế

@@ -13,6 +13,7 @@
   "author": "@hoantc",
   "license": "ISC",
   "dependencies": {
-    "@evershop/evershop": "^1.2.2"
+    "@evershop/evershop": "^1.2.2",
+    "react-helmet": "^6.1.0"
   }
 }

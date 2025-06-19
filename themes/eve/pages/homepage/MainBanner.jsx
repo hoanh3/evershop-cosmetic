@@ -20,8 +20,3 @@ function MainBanner() {
 }
 
 export default MainBanner;
-
-export const layout = {
-  areaId: "content",
-  sortOrder: 1,
-};
