@@ -4,9 +4,68 @@ import {
   useCheckout,
   useCheckoutDispatch,
 } from "@components/common/context/checkout";
-import Spinner from "@components/common/Spinner";
+import { useQuery } from "urql";
 
-// const { debug, error } = require("@evershop/evershop/src/lib/log/logger");
+const cartQuery = `
+  query Query($cartId: String) {
+    cart(id: $cartId) {
+      billingAddress {
+        cartAddressId
+        fullName
+        postcode
+        telephone
+        country {
+          name
+          code
+        }
+        province {
+          name
+          code
+        }
+        city
+        address1
+        address2
+      }
+      shippingAddress {
+        cartAddressId
+        fullName
+        postcode
+        telephone
+        country {
+          name
+          code
+        }
+        province {
+          name
+          code
+        }
+        city
+        address1
+        address2
+      }
+      customerEmail
+    }
+  }
+`;
+
+const cardStyle = {
+  style: {
+    base: {
+      color: "#737373",
+      fontFamily: "Arial, sans-serif",
+      fontSmoothing: "antialiased",
+      fontSize: "16px",
+      "::placeholder": {
+        color: "#737373",
+      },
+    },
+    invalid: {
+      color: "#fa755a",
+      iconColor: "#fa755a",
+    },
+  },
+  hidePostalCode: true,
+};
 
 const generateCode = (length = 6) => {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -22,54 +81,68 @@ export default function CheckoutForm({
   pollPaymentStatusApi,
   successUrl,
 }) {
+  const [clientSecret, setClientSecret] = React.useState(null);
+  const [showTestCard, setShowTestCard] = useState("success");
   const { steps, cartId, orderId, orderPlaced, paymentMethods } = useCheckout();
-  const { placeOrder } = useCheckoutDispatch();
-  const [isWaiting, setIsWaiting] = useState(false);
+  const { placeOrder, setError } = useCheckoutDispatch();
 
-  // Submit đơn hàng khi đã điền đủ thông tin
+  const [result] = useQuery({
+    query: cartQuery,
+    variables: {
+      cartId,
+    },
+    pause: orderPlaced === true,
+  });
+
   useEffect(() => {
-    const submitOrder = async () => {
-      setIsWaiting(true);
-      await placeOrder(); // gọi API đặt hàng → nhận orderId
-    };
-
-    if (steps.every((step) => step.isCompleted) && !orderPlaced) {
-      submitOrder();
+    // Create PaymentIntent as soon as the order is placed
+    if (orderId) {
+      console.log(`Tạo order: ${orderId}`);
     }
+  }, [orderId]);
+
+  useEffect(() => {
+    const pay = async () => {
+      await placeOrder();
+    };
+    pay();
+    // if (steps.every((step) => step.isCompleted)) {
+    //   pay();
+    // }
   }, [steps, orderPlaced]);
 
   // Gọi API tạo phiên thanh toán khi đã có orderId
-  useEffect(() => {
-    const createPaymentSession = async () => {
-      const res = await fetch(createPaymentSessionApi, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ order_id: orderId, cart_id: cartId }),
-      });
-      const data = await res.json();
+  // useEffect(() => {
+  //   const createPaymentSession = async () => {
+  //     const res = await fetch(createPaymentSessionApi, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ order_id: orderId, cart_id: cartId }),
+  //     });
+  //     const data = await res.json();
 
-      // Có thể redirect tới cổng thanh toán, hoặc hiển thị QR code
-      if (data.paymentUrl) {
-        window.open(data.paymentUrl, "_blank"); // hoặc dùng location.href nếu muốn chuyển trang luôn
-      }
+  //     // Có thể redirect tới cổng thanh toán, hoặc hiển thị QR code
+  //     if (data.paymentUrl) {
+  //       window.open(data.paymentUrl, "_blank"); // hoặc dùng location.href nếu muốn chuyển trang luôn
+  //     }
 
-      // Poll trạng thái đơn hàng sau khi mở thanh toán
-      const interval = setInterval(async () => {
-        const checkRes = await fetch(
-          `${pollPaymentStatusApi}?order_id=${orderId}`
-        );
-        const checkData = await checkRes.json();
-        if (checkData.status === "paid") {
-          clearInterval(interval);
-          window.location.href = `${successUrl}/${orderId}`;
-        }
-      }, 3000);
-    };
+  //     // Poll trạng thái đơn hàng sau khi mở thanh toán
+  //     const interval = setInterval(async () => {
+  //       const checkRes = await fetch(
+  //         `${pollPaymentStatusApi}?order_id=${orderId}`
+  //       );
+  //       const checkData = await checkRes.json();
+  //       if (checkData.status === "paid") {
+  //         clearInterval(interval);
+  //         window.location.href = `${successUrl}/${orderId}`;
+  //       }
+  //     }, 3000);
+  //   };
 
-    if (orderPlaced && orderId) {
-      createPaymentSession();
-    }
-  }, [orderPlaced, orderId]);
+  //   if (orderPlaced && orderId) {
+  //     createPaymentSession();
+  //   }
+  // }, [orderPlaced, orderId]);
 
   const paymentCode = generateCode(6);
   const content = `${paymentCode} hoantc mai dinh`;
