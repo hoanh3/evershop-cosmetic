@@ -1,18 +1,17 @@
 import { _ } from "@evershop/evershop/src/lib/locale/translate";
-import React, { useState } from "react";
-import { toast } from "react-toastify";
-import { useAppDispatch, useAppState } from "@components/common/context/app";
+import React, { useEffect, useState } from "react";
 import "./AddToCart.scss";
 
 const AddToCart = ({ loading }) => {
-  const [toastId, setToastId] = useState();
-  const [error, setError] = useState();
-  const appContext = useAppState();
-  const { setData } = useAppDispatch();
+  const classButton = ["button-add-cart"];
+
+  if (loading) {
+    classButton.push("loading");
+  }
 
   return (
     <div className="add-cart">
-      <button className="button">
+      <button className={classButton.join(" ")}>
         <span>{_("ADD TO CART")}</span>
         {loading === true && (
           <svg

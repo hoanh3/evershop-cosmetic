@@ -31,7 +31,19 @@
         "resolve": "extensions/greeting_widget",
         "enabled": true,
         "priority": 20
+      },
+      {
+        "name": "qr_payment",
+        "resolve": "extensions/qr_payment",
+        "enabled": true,
+        "priority": 10
       }
-    ]
+    ],
+    "qrPayment": {
+      "enabled": 1,
+      "accountNumber": "1111686829",
+      "bankId": "techcombank",
+      "accountName": "Tran Cong Hoan"
+    }
   }
 }
